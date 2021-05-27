@@ -55,7 +55,7 @@ public class Value implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Value [" + getValueCounter() + ",subValues=" + subValues + "]";
+		return "Value [valueCounter=" + getValueCounter() + ",subValues=" + subValues + "]";
 	}
 
 }

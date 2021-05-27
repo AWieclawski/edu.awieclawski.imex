@@ -43,7 +43,7 @@ public class SubValue implements Serializable {
 
 	@Override
 	public String toString() {
-		return "SubValue [" + getSubValueCounter() + ",subValue=" + subValue + "]";
+		return "SubValue [subValueCounter=" + getSubValueCounter() + ",subValue=" + subValue + "]";
 	}
 
 }

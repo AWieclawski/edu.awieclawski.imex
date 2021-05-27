@@ -56,8 +56,8 @@ public class DataImport {
 			}
 		}
 
-		if (valuesList != null)
-			LOGGER.log(Level.INFO, "-valuesList" + valuesList.toString());
+//		if (valuesList != null)
+//			LOGGER.log(Level.INFO, "-valuesList" + valuesList.toString());
 
 		return valuesList;
 	}
@@ -69,24 +69,23 @@ public class DataImport {
 	 */
 	private Value getSubValuesFromValues(String line) {
 		int b_count = 1;
-		List<SubValue> subValuesList = new ArrayList<>();
-		Value newValues = new Value();
+		Value newValue = new Value();
 		try (Scanner rowScanner = new Scanner(line)) {
 			rowScanner.useDelimiter(SUBVALUES_DELIMITER);
 			while (rowScanner.hasNext()) {
 				SubValue newSubValue = new SubValue();
 				String subValueAsStr = rowScanner.next();
 				newSubValue.setSubValue(subValueAsStr);
-				newValues.addSubValues(newSubValue);
+				newValue.addSubValues(newSubValue);
 				newSubValue.setSubValueCounter(b_count);
 				b_count++;
 			}
 		}
 
-		if (subValuesList != null)
-			LOGGER.log(Level.INFO, "--subValuesList:" + subValuesList.toString());
+//		if (newValue != null)
+//			LOGGER.log(Level.INFO, "--newValue:" + newValue.toString());
 
-		return newValues;
+		return newValue;
 	}
 
 	/**
