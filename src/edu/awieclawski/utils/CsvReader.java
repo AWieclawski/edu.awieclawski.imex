@@ -3,11 +3,15 @@ package edu.awieclawski.utils;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+//import java.util.logging.Level;
+//import java.util.logging.Logger;
 
 import edu.awieclawski.models.SubValue;
 import edu.awieclawski.models.Value;
 
 public class CsvReader {
+
+//	private final static Logger LOGGER = Logger.getLogger(CsvReader.class.getName());
 
 	private final String SUBVALUES_DELIMITER = ",";
 	private final String VALUES_DELIMITER = ";";
