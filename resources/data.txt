@@ -1,0 +1,3 @@
+#Value;Value[subValue,subValue,subValue];Value;Value
+Alfa00,Alfa01;Beta00,Beta01,Beta02;Gamma00;Delta00,Delta01
+Alfa10,Alfa11;Beta10,Beta11,Beta12;Gamma10,Gamma11;Delta10,Delta11,Delta13,Delta14
