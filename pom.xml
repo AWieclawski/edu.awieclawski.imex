@@ -58,7 +58,7 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- jstl -->
+		<!-- https://mvnrepository.com/artifact/javax.servlet/jstl/1.2 -->
 		<dependency>
 			<groupId>jstl</groupId>
 			<artifactId>jstl</artifactId>
@@ -74,7 +74,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<version>${org.springframework.boot.version}</version>
 
-				<!-- important to successful create an auto-executable jar or war file -->
+				<!-- important to successful create an auto-executable war (or  jar) file -->
 				<configuration>
 					<mainClass>edu.awieclawski.imex.AppWar</mainClass>
 					<layout>WAR</layout>
