@@ -14,11 +14,5 @@
 
 	</div>
 	
-		<div>
-
-		<jsp:include page="partials/message.jsp" />
-
-	</div>	
-
 </body>
 </html>

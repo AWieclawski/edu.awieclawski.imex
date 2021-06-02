@@ -8,6 +8,8 @@
 </head>
 <body>
 
+	<h1>Results</h1>
+
 	<div>
 
 		<jsp:include page="partials/message.jsp" />
