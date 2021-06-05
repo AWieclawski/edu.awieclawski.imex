@@ -5,20 +5,31 @@
 <head>
 <meta charset="UTF-8">
 <title>Result of the upload</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
 
-	<h1>Results</h1>
+	<div class="container-fluid">
 
-	<div>
+		<jsp:include page="partials/menu.jsp" />
 
-		<jsp:include page="partials/message.jsp" />
 
-	</div>
+		<div class="jumbotron text-center">
 
-	<div>
+			<jsp:include page="partials/message.jsp" />
 
-		<jsp:include page="partials/valueslists.jsp" />
+		</div>
+
+		<div>
+
+			<jsp:include page="partials/valueslists.jsp" />
+
+		</div>
 
 	</div>
 

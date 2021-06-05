@@ -5,10 +5,6 @@
 
 	<h1>Welcome</h1>
 
-	<div>
-
-		<p>This is welcome page of the imex</p>
-
-	</div>
+	<p>This is welcome page of the imex</p>
 
 </div>

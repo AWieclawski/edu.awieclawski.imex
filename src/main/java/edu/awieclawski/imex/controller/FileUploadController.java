@@ -36,7 +36,7 @@ public class FileUploadController {
 		this.storageService = storageService;
 	}
 
-	@GetMapping("/")
+	@GetMapping("/up")
 	public String listUploadedFiles(Model model) throws IOException {
 
 		model.addAttribute("files",
@@ -59,7 +59,7 @@ public class FileUploadController {
 				.body(file);
 	}
 
-	@PostMapping("/")
+	@PostMapping("/up")
 	public String handleFileUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
 
 		List<List<Value>> valuesLists = new ArrayList<>();
