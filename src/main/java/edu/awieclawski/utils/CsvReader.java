@@ -6,9 +6,12 @@ import java.util.Scanner;
 //import java.util.logging.Level;
 //import java.util.logging.Logger;
 
+import org.springframework.stereotype.Component;
+
 import edu.awieclawski.models.SubValue;
 import edu.awieclawski.models.Value;
 
+@Component
 public class CsvReader {
 
 //	private final static Logger LOGGER = Logger.getLogger(CsvReader.class.getName());

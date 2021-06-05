@@ -14,6 +14,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 
 @SpringBootApplication
 @EnableConfigurationProperties(StorageProperties.class)
+
 public class AppWar extends SpringBootServletInitializer {
 
 	@Override

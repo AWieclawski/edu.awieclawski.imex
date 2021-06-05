@@ -13,9 +13,9 @@ import java.util.logging.Logger;
 import edu.awieclawski.models.Value;
 import edu.awieclawski.utils.CsvReader;
 
-public class FileOperator {
+public class LocalFileOperator {
 
-	private final static Logger LOGGER = Logger.getLogger(FileOperator.class.getName());
+	private final static Logger LOGGER = Logger.getLogger(LocalFileOperator.class.getName());
 
 	private final String SKIP_DELIMITER = "#";
 	private List<List<Value>> m_result = new ArrayList<>();

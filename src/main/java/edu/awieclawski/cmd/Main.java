@@ -1,10 +1,10 @@
 package edu.awieclawski.cmd;
 
-import edu.awieclawski.services.FileOperator;
+import edu.awieclawski.services.LocalFileOperator;
 
 public class Main {
 
-	private static FileOperator dtImp = new FileOperator();
+	private static LocalFileOperator dtImp = new LocalFileOperator();
 	// mark resources directory as 'Use as Source Folder' in Eclipse to make
 	// data.txt file available
 	private static final String filePath = "data.txt";
