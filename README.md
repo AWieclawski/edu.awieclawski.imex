@@ -10,4 +10,7 @@ and visit at: http://localhost:8080
 
 upload example file pattern: subValue,subValue;subValue,subValue,subValue;subValue
 
+find data.txt in edu.awieclawski.imex/src/main/resources/
+
+
 #maven #spring #jsp #jstl #json
