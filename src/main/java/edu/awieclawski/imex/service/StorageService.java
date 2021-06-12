@@ -3,10 +3,11 @@ package edu.awieclawski.imex.service;
 import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;
 
-import edu.awieclawski.models.Value;
+//import edu.awieclawski.models.Value;
+import edu.awieclawski.models.ValuesLists;
 
 import java.nio.file.Path;
-import java.util.List;
+//import java.util.List;
 import java.util.stream.Stream;
 
 public interface StorageService {
@@ -23,6 +24,6 @@ public interface StorageService {
 
 	void deleteAll();
 	
-	List<List<Value>> fileOperate(MultipartFile file);
+	ValuesLists fileOperate(MultipartFile file);
 	
 }

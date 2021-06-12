@@ -11,7 +11,8 @@ import org.springframework.web.multipart.MultipartFile;
 import edu.awieclawski.imex.exception.StorageException;
 import edu.awieclawski.imex.exception.StorageFileNotFoundException;
 import edu.awieclawski.imex.properties.StorageProperties;
-import edu.awieclawski.models.Value;
+//import edu.awieclawski.models.Value;
+import edu.awieclawski.models.ValuesLists;
 import edu.awieclawski.services.UploadFileOperator;
 
 import java.io.IOException;
@@ -19,8 +20,8 @@ import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
+//import java.util.ArrayList;
+//import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Stream;
@@ -96,8 +97,8 @@ public class FileSystemStorageService implements StorageService {
 	}
 
 	@Override
-	public List<List<Value>> fileOperate(MultipartFile file) {
-		List<List<Value>> valuesLists = new ArrayList<>();
+	public ValuesLists fileOperate(MultipartFile file) {
+		ValuesLists valuesLists = new ValuesLists();
 
 		AnnotationConfigApplicationContext csvCtx = new AnnotationConfigApplicationContext();
 		csvCtx.scan("edu.awieclawski.utils", "edu.awieclawski.services");

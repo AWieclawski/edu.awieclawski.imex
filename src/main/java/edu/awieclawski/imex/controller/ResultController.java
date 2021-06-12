@@ -11,7 +11,7 @@ public class ResultController {
 	
 	@GetMapping({ "/result" })
 	public String presentResults(Model model, @ModelAttribute("message") String messageReceived) {
-		System.out.println(messageReceived);
+		System.out.println("--"+messageReceived);
 		model.addAttribute("messageToDisplay", messageReceived);
 		return "/result";
 	}

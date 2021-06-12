@@ -16,6 +16,7 @@
 		<org.springframework.boot.version>2.1.6.RELEASE</org.springframework.boot.version>
 		<mysql-connector-java.version>8.0.15</mysql-connector-java.version>
 		<org.apache.tomcat.embed.version>9.0.12</org.apache.tomcat.embed.version>
+		<!-- <jackson.core.version>2.9.9</jackson.core.version> -->
 		<jstl.version>1.2</jstl.version>
 		<java.version>1.8</java.version>
 	</properties>
@@ -65,6 +66,13 @@
 			<version>${jstl.version}</version>
 		</dependency>
 
+		<!-- JSON in Jackson ObjectMapper -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<!-- <version>${jackson.core.version}</version> -->
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -74,7 +82,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<version>${org.springframework.boot.version}</version>
 
-				<!-- important to successful create an auto-executable war (or  jar) file -->
+				<!-- important to successful create an auto-executable war (or jar) file -->
 				<configuration>
 					<mainClass>edu.awieclawski.imex.AppWar</mainClass>
 					<layout>WAR</layout>

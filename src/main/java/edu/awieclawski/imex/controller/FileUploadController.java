@@ -1,9 +1,12 @@
 package edu.awieclawski.imex.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+//import java.util.ArrayList;
+//import java.util.List;
 import java.util.stream.Collectors;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -24,7 +27,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import edu.awieclawski.imex.exception.StorageFileNotFoundException;
 //import edu.awieclawski.imex.service.I_ConversionService;
 import edu.awieclawski.imex.service.StorageService;
-import edu.awieclawski.models.Value;
+//import edu.awieclawski.models.Value;
+import edu.awieclawski.models.ValuesLists;
 
 @Controller
 public class FileUploadController {
@@ -60,16 +64,17 @@ public class FileUploadController {
 	}
 
 	@PostMapping("/up")
-	public String handleFileUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
-
-		List<List<Value>> valuesLists = new ArrayList<>();
+	public String handleFileUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes,
+			HttpServletRequest request) {
+		HttpSession session = request.getSession(false);
+		ValuesLists valuesLists = new ValuesLists();
 
 //		storageService.store(file);
 		valuesLists = storageService.fileOperate(file);
 		redirectAttributes.addFlashAttribute("message",
 				"You successfully uploaded " + file.getOriginalFilename() + "!");
 		redirectAttributes.addFlashAttribute("valueslists", valuesLists);
-
+		session.setAttribute("sessionValuesLists", valuesLists);
 		return "redirect:/result";
 	}
 
