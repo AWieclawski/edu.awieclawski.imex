@@ -9,3 +9,5 @@ or do it by one command only in project dir.: ```$ mvn clean spring-boot:run ``
 and visit at: http://localhost:8080
 
 upload example file pattern: subValue,subValue;subValue,subValue,subValue;subValue
+
+#maven #spring #jsp #jstl #json
