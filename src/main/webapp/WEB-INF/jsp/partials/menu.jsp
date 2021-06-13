@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <nav class="navbar navbar-default">
 
 	<div class="container-fluid">
@@ -17,7 +18,7 @@
 
 			<c:choose>
 
-				<c:when test="${requestScope.valueslists != null}">
+				<c:when test="${sessionScope.sessionValuesLists != null}">
 
 					<li class="active"><a href="/json"> JSON </a></li>
 

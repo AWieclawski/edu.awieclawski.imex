@@ -38,7 +38,6 @@ public class UploadFileController {
 		ValuesLists valuesLists = new ValuesLists();
 		valuesLists = uploadService.fileOperate(file);
 		redirectAttributes.addFlashAttribute("message", "You successfully uploaded submitted file!");
-		redirectAttributes.addFlashAttribute("valueslists", valuesLists);
 		redirectAttributes.addFlashAttribute("fileName", file.getOriginalFilename());
 		redirectAttributes.addFlashAttribute("fileType", file.getContentType());
 		redirectAttributes.addFlashAttribute("fileSize", file.getSize());
