@@ -25,12 +25,6 @@
 
 		</div>
 
-		<div>
-
-			<jsp:include page="partials/valueslists.jsp" />
-
-		</div>
-
 	</div>
 
 </body>

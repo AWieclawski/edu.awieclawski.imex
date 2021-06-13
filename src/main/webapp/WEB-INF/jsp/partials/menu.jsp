@@ -17,7 +17,6 @@
 
 			<c:choose>
 
-				<%-- ${requestScope["valueslists"]} --%>
 				<c:when test="${requestScope.valueslists != null}">
 
 					<li class="active"><a href="/json"> JSON </a></li>

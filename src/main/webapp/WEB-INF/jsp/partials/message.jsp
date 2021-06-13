@@ -2,8 +2,14 @@
 	pageEncoding="UTF-8"%>
 <div>
 
-	<h1>Results</h1>
+	<h2>Results</h2>
 
 	<h3>${requestScope["messageToDisplay"]}</h3>
+
+	<pre>OriginalFileName: ${requestScope["fileReceivedName"]}</pre>
+
+	<pre>Type: ${requestScope["fileReceivedType"]}</pre>
+
+	<pre>Size: ${requestScope["fileReceivedSize"]} in bytes</pre>
 
 </div>

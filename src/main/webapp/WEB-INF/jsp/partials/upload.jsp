@@ -5,7 +5,7 @@
 
 	<h3>Choose File to Upload in Server</h3>
 
-	<form class="form-horizontal" action="/up" method="post"
+	<form class="form-horizontal" action="/upload" method="post"
 		enctype="multipart/form-data">
 
 		<div class="form-group">
