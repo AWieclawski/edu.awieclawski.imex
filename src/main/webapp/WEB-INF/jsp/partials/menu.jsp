@@ -20,7 +20,7 @@
 
 				<c:when test="${sessionScope.sessionValuesLists != null}">
 
-					<li class="active"><a href="/json"> JSON </a></li>
+					<li class="active"><a href="/json" target="_blank"> JSON </a></li>
 
 				</c:when>
 
@@ -32,7 +32,21 @@
 
 			</c:choose>
 
-			<li><a href="#"> N/A </a></li>
+			<c:choose>
+
+				<c:when test="${sessionScope.sessionValuesLists != null}">
+
+					<li class="active"><a href="/xml" target="_blank"> XML </a></li>
+
+				</c:when>
+
+				<c:otherwise>
+
+					<li><a href="#"> N/A </a></li>
+
+				</c:otherwise>
+
+			</c:choose>
 
 		</ul>
 

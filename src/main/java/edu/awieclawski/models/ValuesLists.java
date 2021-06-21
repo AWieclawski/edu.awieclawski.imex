@@ -4,6 +4,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class ValuesLists implements Serializable {
 	
 	/**
@@ -28,6 +32,7 @@ public class ValuesLists implements Serializable {
 		return valuesLists;
 	}
 
+	@XmlElement
 	public void setValuesLists(List<List<Value>> valuesLists) {
 		this.valuesLists = valuesLists;
 	}
