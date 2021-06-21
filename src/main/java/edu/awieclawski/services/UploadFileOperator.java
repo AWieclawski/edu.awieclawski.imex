@@ -60,8 +60,8 @@ public class UploadFileOperator {
 			LOGGER.log(Level.SEVERE, "IOException close fault: " + reader, e);
 		}
 
-		if (m_result != null)
-			LOGGER.log(Level.INFO, "m_result:" + m_result.toString());
+//		if (m_result != null)
+//			LOGGER.log(Level.INFO, "m_result:" + m_result.toString());
 
 		return m_result;
 	}

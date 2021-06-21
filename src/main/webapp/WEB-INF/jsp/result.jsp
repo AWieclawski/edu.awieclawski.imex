@@ -22,6 +22,8 @@
 		<div class="jumbotron text-center">
 
 			<jsp:include page="partials/message.jsp" />
+			
+			<jsp:include page="partials/filedata.jsp" />
 
 		</div>
 
