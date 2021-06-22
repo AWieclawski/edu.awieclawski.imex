@@ -1,16 +1,20 @@
 package edu.awieclawski.imex.controller;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-//import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -34,7 +38,6 @@ public class JsonController {
 		ValuesLists valuesListsReceived = (ValuesLists) session.getAttribute("sessionValuesLists");
 
 		if (valuesListsReceived != null)
-//			System.out.println("----" + valuesListsReceived.toString());
 			// pretty print
 			try {
 				prettyValuesLists = objectMapper.writerWithDefaultPrettyPrinter()
@@ -53,6 +56,36 @@ public class JsonController {
 
 		ValuesLists valuesListsReceived = (ValuesLists) session.getAttribute("sessionValuesLists");
 		return valuesListsReceived;
+	}
+
+	@RequestMapping(value = "/downloadjson", method = RequestMethod.GET)
+	public void downloadJSON(HttpServletResponse response, HttpServletRequest request) {
+
+		HttpSession session = request.getSession(false);
+		String prettyValuesLists = null;
+		ObjectMapper objectMapper = new ObjectMapper();
+		ValuesLists valuesListsReceived = (ValuesLists) session.getAttribute("sessionValuesLists");
+
+		response.setHeader("Content-Disposition", "attachment; filename=valueslists.json");
+
+		if (valuesListsReceived != null) {
+
+			try {
+				prettyValuesLists = objectMapper.writerWithDefaultPrettyPrinter()
+						.writeValueAsString(valuesListsReceived);
+			} catch (JsonProcessingException e) {
+				LOGGER.log(Level.SEVERE, "JsonProcessingException fault: " + prettyValuesLists, e);
+			}
+
+			try {
+				InputStream is = new ByteArrayInputStream(prettyValuesLists.getBytes());
+				IOUtils.copy(is, response.getOutputStream());
+				response.flushBuffer();
+			} catch (IOException ex) {
+				LOGGER.log(Level.SEVERE, "Error writing file to output stream." + prettyValuesLists, ex);
+			}
+		}
+
 	}
 
 }

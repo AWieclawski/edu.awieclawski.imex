@@ -20,7 +20,7 @@
 
 				<c:when test="${sessionScope.sessionValuesLists != null}">
 
-					<li class="active"><a href="/json" target="_blank"> JSON </a></li>
+					<jsp:include page="sub/menujson.jsp" />
 
 				</c:when>
 
@@ -36,7 +36,9 @@
 
 				<c:when test="${sessionScope.sessionValuesLists != null}">
 
-					<li class="active"><a href="/xml" target="_blank"> XML </a></li>
+					<!-- 	<li class="active"><a href="/xml" target="_blank"> XML </a></li>	-->
+
+					<jsp:include page="sub/menuxml.jsp" />
 
 				</c:when>
 
