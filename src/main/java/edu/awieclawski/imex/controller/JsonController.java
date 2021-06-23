@@ -8,6 +8,7 @@ import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -28,14 +29,20 @@ public class JsonController {
 		return valuesListsReceived;
 	}
 
-	@RequestMapping(value = "/downloadjson", method = RequestMethod.GET, produces = "application/json")
-	public ResponseEntity<InputStreamResource> downloadJSON(
-			@SessionAttribute("sessionValuesLists") ValuesLists valuesListsReceived) {
+	@RequestMapping(value = "/downloadjson/{subPage}", method = RequestMethod.GET, produces = "application/json")
+	public ResponseEntity<InputStreamResource> downloadJSONsub(
+			@PathVariable(value = "subPage", required = false) String subPageName,
+			@SessionAttribute("sessionValuesLists") ValuesLists valuesListsReceived) throws Exception {
 		ObjectMapper mapper = new ObjectMapper();
 		byte[] byteBuffer = null;
 
 		try {
-			byteBuffer = mapper.writeValueAsBytes(valuesListsReceived);
+			if (subPageName.equals("pretty"))
+				byteBuffer = mapper.writerWithDefaultPrettyPrinter().writeValueAsBytes(valuesListsReceived);
+			else if (subPageName.equals("simple"))
+				byteBuffer = mapper.writeValueAsBytes(valuesListsReceived);
+			else
+				throw new Exception();
 		} catch (JsonProcessingException e) {
 			LOGGER.log(Level.SEVERE, "JsonProcessingException fault: " + valuesListsReceived, e);
 		}
@@ -43,24 +50,6 @@ public class JsonController {
 		return ResponseEntity.ok().contentLength(byteBuffer.length)
 				.contentType(MediaType.parseMediaType("application/octet-stream"))
 				.header("Content-Disposition", "attachment; filename=\"valueslists.json\"")
-				.body(new InputStreamResource(new ByteArrayInputStream(byteBuffer)));
-	}
-	
-	@RequestMapping(value = "/downloadprettyjson", method = RequestMethod.GET, produces = "application/json")
-	public ResponseEntity<InputStreamResource> downloadPrettyJSON(
-			@SessionAttribute("sessionValuesLists") ValuesLists valuesListsReceived) {
-		ObjectMapper mapper = new ObjectMapper();
-		byte[] byteBuffer = null;
-
-		try {
-			byteBuffer = mapper.writerWithDefaultPrettyPrinter().writeValueAsBytes(valuesListsReceived);
-		} catch (JsonProcessingException e) {
-			LOGGER.log(Level.SEVERE, "JsonProcessingException fault: " + valuesListsReceived, e);
-		}
-
-		return ResponseEntity.ok().contentLength(byteBuffer.length)
-				.contentType(MediaType.parseMediaType("application/octet-stream"))
-				.header("Content-Disposition", "attachment; filename=\"prettyvalueslists.json\"")
 				.body(new InputStreamResource(new ByteArrayInputStream(byteBuffer)));
 	}
 

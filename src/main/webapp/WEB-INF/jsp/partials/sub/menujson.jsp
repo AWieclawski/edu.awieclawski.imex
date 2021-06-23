@@ -8,12 +8,12 @@
 
 		<li class="active"><a href="/json" target="_blank"> View </a></li>
 
-		<li class="active"><a href="/downloadjson" target="_blank">
+		<li class="active"><a href="/downloadjson/simple" target="_blank">
 				File </a></li>
-				
-		<li class="active"><a href="/downloadprettyjson" target="_blank">
+
+		<li class="active"><a href="/downloadjson/pretty" target="_blank">
 				Pretty File </a></li>
-				
+
 	</ul></li>
 
 
