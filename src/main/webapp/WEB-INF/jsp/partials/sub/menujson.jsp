@@ -10,6 +10,10 @@
 
 		<li class="active"><a href="/downloadjson" target="_blank">
 				File </a></li>
+				
+		<li class="active"><a href="/downloadprettyjson" target="_blank">
+				Pretty File </a></li>
+				
 	</ul></li>
 
 

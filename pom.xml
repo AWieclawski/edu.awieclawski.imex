@@ -74,7 +74,7 @@
 			<!-- <version>${jackson.core.version}</version> -->
 		</dependency>
 
-		<!-- XML in Jackson ObjectMapper -->
+		<!-- XML in Jackson XmlMapper -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.dataformat</groupId>
 			<artifactId>jackson-dataformat-xml</artifactId>

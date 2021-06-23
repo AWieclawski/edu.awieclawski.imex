@@ -10,6 +10,10 @@
 
 		<li class="active"><a href="/downloadxml" target="_blank">
 				File </a></li>
+				
+		<li class="active"><a href="/downloadprettyxml" target="_blank">
+				Pretty File </a></li>
+				
 	</ul></li>
 
 

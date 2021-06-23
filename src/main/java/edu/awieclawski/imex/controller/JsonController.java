@@ -1,15 +1,12 @@
 package edu.awieclawski.imex.controller;
 
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.tomcat.util.http.fileupload.IOUtils;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,31 +28,40 @@ public class JsonController {
 		return valuesListsReceived;
 	}
 
-	@RequestMapping(value = "/downloadjson", method = RequestMethod.GET)
-	public void downloadJSON(HttpServletResponse response, @SessionAttribute("sessionValuesLists") ValuesLists valuesListsReceived) {
-		String prettyValuesLists = null;
-		ObjectMapper objectMapper = new ObjectMapper();
+	@RequestMapping(value = "/downloadjson", method = RequestMethod.GET, produces = "application/json")
+	public ResponseEntity<InputStreamResource> downloadJSON(
+			@SessionAttribute("sessionValuesLists") ValuesLists valuesListsReceived) {
+		ObjectMapper mapper = new ObjectMapper();
+		byte[] byteBuffer = null;
 
-		response.setHeader("Content-Disposition", "attachment; filename=valueslists.json");
-
-		if (valuesListsReceived != null) {
-
-			try {
-				prettyValuesLists = objectMapper.writerWithDefaultPrettyPrinter()
-						.writeValueAsString(valuesListsReceived);
-			} catch (JsonProcessingException e) {
-				LOGGER.log(Level.SEVERE, "JsonProcessingException fault: " + prettyValuesLists, e);
-			}
-
-			try {
-				InputStream is = new ByteArrayInputStream(prettyValuesLists.getBytes());
-				IOUtils.copy(is, response.getOutputStream());
-				response.flushBuffer();
-			} catch (IOException ex) {
-				LOGGER.log(Level.SEVERE, "Error writing file to output stream." + prettyValuesLists, ex);
-			}
+		try {
+			byteBuffer = mapper.writeValueAsBytes(valuesListsReceived);
+		} catch (JsonProcessingException e) {
+			LOGGER.log(Level.SEVERE, "JsonProcessingException fault: " + valuesListsReceived, e);
 		}
 
+		return ResponseEntity.ok().contentLength(byteBuffer.length)
+				.contentType(MediaType.parseMediaType("application/octet-stream"))
+				.header("Content-Disposition", "attachment; filename=\"valueslists.json\"")
+				.body(new InputStreamResource(new ByteArrayInputStream(byteBuffer)));
+	}
+	
+	@RequestMapping(value = "/downloadprettyjson", method = RequestMethod.GET, produces = "application/json")
+	public ResponseEntity<InputStreamResource> downloadPrettyJSON(
+			@SessionAttribute("sessionValuesLists") ValuesLists valuesListsReceived) {
+		ObjectMapper mapper = new ObjectMapper();
+		byte[] byteBuffer = null;
+
+		try {
+			byteBuffer = mapper.writerWithDefaultPrettyPrinter().writeValueAsBytes(valuesListsReceived);
+		} catch (JsonProcessingException e) {
+			LOGGER.log(Level.SEVERE, "JsonProcessingException fault: " + valuesListsReceived, e);
+		}
+
+		return ResponseEntity.ok().contentLength(byteBuffer.length)
+				.contentType(MediaType.parseMediaType("application/octet-stream"))
+				.header("Content-Disposition", "attachment; filename=\"prettyvalueslists.json\"")
+				.body(new InputStreamResource(new ByteArrayInputStream(byteBuffer)));
 	}
 
 }
