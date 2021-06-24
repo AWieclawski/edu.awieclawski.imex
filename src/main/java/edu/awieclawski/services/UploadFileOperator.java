@@ -12,7 +12,8 @@ import java.util.logging.Logger;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
-import edu.awieclawski.imex.exception.StorageException;
+import edu.awieclawski.imex.exceptions.NullPathVariableException;
+import edu.awieclawski.imex.exceptions.StorageException;
 //import edu.awieclawski.models.Value;
 import edu.awieclawski.models.ValuesLists;
 import edu.awieclawski.utils.CsvReader;
@@ -25,7 +26,7 @@ public class UploadFileOperator {
 	private final String SKIP_DELIMITER = "#";
 	private CsvReader csvR = new CsvReader();
 
-	public ValuesLists uploadedFileOperate(MultipartFile file) throws StorageException {
+	public ValuesLists uploadedFileOperate(MultipartFile file) throws NullPathVariableException {
 		ValuesLists m_result = new ValuesLists();
 		
 		if (file.isEmpty()) {

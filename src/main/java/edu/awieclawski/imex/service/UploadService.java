@@ -7,7 +7,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import edu.awieclawski.imex.exception.StorageException;
+import edu.awieclawski.imex.exceptions.NullPathVariableException;
 import edu.awieclawski.models.ValuesLists;
 import edu.awieclawski.services.UploadFileOperator;
 
@@ -28,7 +28,7 @@ public class UploadService implements I_UploadService {
 
 		try {
 			valuesLists = upFileOperator.uploadedFileOperate(file);
-		} catch (StorageException e) {
+		} catch (NullPathVariableException e) {
 			LOGGER.log(Level.SEVERE, "StorageException fault: " + e);
 		}
 

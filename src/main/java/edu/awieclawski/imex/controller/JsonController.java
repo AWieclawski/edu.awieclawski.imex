@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import edu.awieclawski.imex.exceptions.NullPathVariableException;
+import edu.awieclawski.imex.exceptions.PathVariableNotFoundException;
 import edu.awieclawski.models.ValuesLists;
 
 @Controller
@@ -32,9 +34,12 @@ public class JsonController {
 	@RequestMapping(value = "/downloadjson/{subPage}", method = RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<InputStreamResource> downloadJSONsub(
 			@PathVariable(value = "subPage", required = false) String subPageName,
-			@SessionAttribute("sessionValuesLists") ValuesLists valuesListsReceived) throws Exception {
+			@SessionAttribute("sessionValuesLists") ValuesLists valuesListsReceived)
+			throws NullPathVariableException, PathVariableNotFoundException {
 		ObjectMapper mapper = new ObjectMapper();
 		byte[] byteBuffer = null;
+
+		LOGGER.log(Level.INFO, "subPageName=" + subPageName);
 
 		try {
 			if (subPageName.equals("pretty"))
@@ -42,15 +47,22 @@ public class JsonController {
 			else if (subPageName.equals("simple"))
 				byteBuffer = mapper.writeValueAsBytes(valuesListsReceived);
 			else
-				throw new Exception();
+				throw new PathVariableNotFoundException(subPageName);
 		} catch (JsonProcessingException e) {
-			LOGGER.log(Level.SEVERE, "JsonProcessingException fault: " + valuesListsReceived, e);
+
+			LOGGER.log(Level.SEVERE, "JsonProcessingException fault: " + valuesListsReceived + "\n" + e.getMessage());
+
 		}
 
 		return ResponseEntity.ok().contentLength(byteBuffer.length)
 				.contentType(MediaType.parseMediaType("application/octet-stream"))
 				.header("Content-Disposition", "attachment; filename=\"valueslists.json\"")
 				.body(new InputStreamResource(new ByteArrayInputStream(byteBuffer)));
+	}
+
+	@RequestMapping(value = "/downloadjson", method = RequestMethod.GET)
+	public void downloadJSONnull() {
+		throw new NullPathVariableException();
 	}
 
 }

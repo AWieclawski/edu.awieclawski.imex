@@ -36,8 +36,6 @@
 
 				<c:when test="${sessionScope.sessionValuesLists != null}">
 
-					<!-- 	<li class="active"><a href="/xml" target="_blank"> XML </a></li>	-->
-
 					<jsp:include page="sub/menuxml.jsp" />
 
 				</c:when>

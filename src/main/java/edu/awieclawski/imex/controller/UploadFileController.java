@@ -30,8 +30,8 @@ public class UploadFileController {
 	}
 
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
-	public String submit(@RequestParam("file") final MultipartFile file, //final ModelMap modelMap,
-			RedirectAttributes redirectAttributes, Model model) {
+	public String submit(@RequestParam("file") final MultipartFile file, RedirectAttributes redirectAttributes,
+			Model model) {
 		ValuesLists valuesLists = new ValuesLists();
 		valuesLists = uploadService.fileOperate(file);
 		redirectAttributes.addFlashAttribute("message", "You successfully uploaded submitted file!");

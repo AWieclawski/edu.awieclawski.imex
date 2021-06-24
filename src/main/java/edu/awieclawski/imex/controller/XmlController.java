@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
+import edu.awieclawski.imex.exceptions.NullPathVariableException;
+import edu.awieclawski.imex.exceptions.PathVariableNotFoundException;
 import edu.awieclawski.models.ValuesLists;
 
 @Controller
@@ -42,15 +44,22 @@ public class XmlController {
 			else if (subPageName.equals("simple"))
 				byteBuffer = xmlMapper.writeValueAsBytes(valuesListsReceived);
 			else
-				throw new Exception();
+				throw new PathVariableNotFoundException(subPageName);
 		} catch (JsonProcessingException e) {
+
 			LOGGER.log(Level.SEVERE, "JsonProcessingException fault: " + valuesListsReceived, e);
+
 		}
 
 		return ResponseEntity.ok().contentLength(byteBuffer.length)
 				.contentType(MediaType.parseMediaType("application/octet-stream"))
 				.header("Content-Disposition", "attachment; filename=\"prettyvalueslists.xml\"")
 				.body(new InputStreamResource(new ByteArrayInputStream(byteBuffer)));
+	}
+
+	@RequestMapping(value = "/downloadxml", method = RequestMethod.GET)
+	public void downloadXMLnull() {
+		throw new NullPathVariableException();
 	}
 
 }
