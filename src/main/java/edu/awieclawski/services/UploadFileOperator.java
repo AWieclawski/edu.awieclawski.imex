@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import edu.awieclawski.imex.exceptions.NullPathVariableException;
-import edu.awieclawski.imex.exceptions.StorageException;
+import edu.awieclawski.imex.exceptions.NoFileException;
 //import edu.awieclawski.models.Value;
 import edu.awieclawski.models.ValuesLists;
 import edu.awieclawski.utils.CsvReader;
@@ -30,7 +30,7 @@ public class UploadFileOperator {
 		ValuesLists m_result = new ValuesLists();
 		
 		if (file.isEmpty()) {
-			throw new StorageException("Failed to store empty file " + file.getOriginalFilename());
+			throw new NoFileException("Failed to store empty file " + file.getOriginalFilename());
 		}
 
 		BufferedReader reader = null;

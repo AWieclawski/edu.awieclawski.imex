@@ -1,5 +1,3 @@
-How to deploy
-
 Deploy war in the project directory: ```$ mvn clean package ``
 
 Run the application using: ```$ java -jar target/imex*.war ``
@@ -12,5 +10,7 @@ upload example file pattern: subValue,subValue;subValue,subValue,subValue;subVal
 
 example data file to import: edu.awieclawski.imex/src/main/resources/data.txt
 
+watch / download converted data as json or xml
 
-#maven #spring #jsp #jstl #json
+
+#maven #spring #jsp #jstl #json #xml
