@@ -1,4 +1,4 @@
-package edu.awieclawski.imex.service;
+package edu.awieclawski.imex.services;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;

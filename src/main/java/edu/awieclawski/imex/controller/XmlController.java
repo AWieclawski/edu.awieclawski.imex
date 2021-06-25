@@ -31,7 +31,7 @@ public class XmlController {
 		return valuesListsReceived;
 	}
 
-	@RequestMapping(value = "/downloadxml/{subPage}", method = RequestMethod.GET, produces = "application/xml")
+	@RequestMapping(value = "/downloadxml/{subPage}", method = RequestMethod.GET)
 	public ResponseEntity<InputStreamResource> downloadXMLsub(
 			@PathVariable(value = "subPage", required = false) String subPageName,
 			@SessionAttribute("sessionValuesLists") ValuesLists valuesListsReceived) throws Exception {

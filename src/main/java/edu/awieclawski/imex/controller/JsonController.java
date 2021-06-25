@@ -31,7 +31,7 @@ public class JsonController {
 		return valuesListsReceived;
 	}
 
-	@RequestMapping(value = "/downloadjson/{subPage}", method = RequestMethod.GET, produces = "application/json")
+	@RequestMapping(value = "/downloadjson/{subPage}", method = RequestMethod.GET) 
 	public ResponseEntity<InputStreamResource> downloadJSONsub(
 			@PathVariable(value = "subPage", required = false) String subPageName,
 			@SessionAttribute("sessionValuesLists") ValuesLists valuesListsReceived)

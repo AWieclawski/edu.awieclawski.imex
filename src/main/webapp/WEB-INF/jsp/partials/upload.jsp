@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>  
 <div>
 
 	<h3>Choose File to Upload in Server</h3>
 
-	<form class="form-horizontal" action="/upload" method="post"
+	<form:form class="form-horizontal" action="/upload" method="post"
 		enctype="multipart/form-data">
 
 		<div class="form-group">
@@ -31,6 +31,6 @@
 
 		</div>
 
-	</form>
+	</form:form>
 
 </div>

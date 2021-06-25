@@ -9,10 +9,10 @@
 		<li class="active"><a href="/xml" target="_blank"> View </a></li>
 
 		<li class="active"><a href="/downloadxml/simple" target="_blank">
-				File </a></li>
+				Raw File </a></li>
 
 		<li class="active"><a href="/downloadxml/pretty" target="_blank">
-				Pretty File </a></li>
+				Formatted File </a></li>
 				
 	</ul></li>
 

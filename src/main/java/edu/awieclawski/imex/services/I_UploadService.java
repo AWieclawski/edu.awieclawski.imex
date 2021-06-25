@@ -1,4 +1,4 @@
-package edu.awieclawski.imex.service;
+package edu.awieclawski.imex.services;
 
 import org.springframework.web.multipart.MultipartFile;
 

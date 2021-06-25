@@ -11,7 +11,7 @@
 
 	Type: ${requestScope["fileReceivedType"]}<br>
 
-	Size: ${requestScope["fileReceivedSize"]} in bytes</pre>
+	Size: ${requestScope["fileReceivedSize"]} [bytes]</pre>
 
 		</c:when>
 

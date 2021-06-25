@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import edu.awieclawski.imex.service.I_UploadService;
+import edu.awieclawski.imex.services.I_UploadService;
 import edu.awieclawski.models.ValuesLists;
 
 @Controller
@@ -40,6 +40,6 @@ public class UploadFileController {
 		redirectAttributes.addFlashAttribute("fileSize", file.getSize());
 
 		model.addAttribute("sessionValuesLists", valuesLists);
-		return "redirect:/result";
+		return "redirect:/results";
 	}
 }
